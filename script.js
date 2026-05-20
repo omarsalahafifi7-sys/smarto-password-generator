@@ -18,3 +18,41 @@ genBtn.addEventListener('click', () =>{
     passbox.value=GeneratePassword();
 });
 
+let lowerChars= "abcdefghijklmnopqrstuvwxyz";
+let upperChars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+let allNumbers = "0123456789";
+let allSymbols = "~!@#$%^&*";
+
+function GeneratePassword(){
+    let genPassword = "";
+    let allChars = "";
+    
+    allChars += lowercase.checked ? lowerChars : "";
+    allChars += uppercase.checked ? upperChars : "";
+    allChars += numbers.checked ? allNumbers : "";
+    allChars += symbols.checked ? allSymbols : "";
+
+    if (allChars == "" || allChars.length == 0){
+        return genPassword;
+    }
+
+    let i = 1;
+    while(i <= inputslider.value){
+        genPassword += allChars.charAt(Math.floor(Math.random() * allChars.length));
+        i++;
+    }
+return genPassword;
+}
+
+copyIcon.addEventListener('click', ()=>{
+    if(passbox.value != "" || passbox.value.length >=1){
+        navigator.clipboard.writeText(passbox.value);
+        copyIcon.innerText = "check";
+        copyIcon.title = "Password Copied";
+        
+        setTimeout(()=>{
+            copyIcon.innerHTML = "content_copy";
+            copyIcon.title = "";
+        }, 300)
+    }
+});
