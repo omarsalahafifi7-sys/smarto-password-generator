@@ -29,18 +29,40 @@ box-shadow: 8px 8px 4px #909090, 8px 8px 0px #575757;
     font-size: 1.4rem;
     margin-block: 8px;
 }
+.inputbox{
+    position: relative;
+}
+
+.inputbox>span{
+    position: absolute;
+    top: 19px;
+    right: 6px;
+    color: #000;
+    font-size: 28px;
+    cursor: pointer;
+    z-index: 2;
+}
+
 .passbox {
     background-color: #fff;
     border: none;
+    border-radius: 4px;
     outline: none;
     padding: 10px;
     width: 300px;
     font-size: 20px;
     margin-block: 8px;
+    text-overflow: ellipsis;
 }
 .row{
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin-block: 8px;
+}
+
+.row>span{
+    font-size: 18px;
 }
 .row>p{
 flex-basis: 100%;
