@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <title>About Me</title>
     <style>
         * {
@@ -11,19 +13,56 @@
         padding: 0;
         box-sizing: border-box;
         }
+
+        .topnav {
+            background: rgba(0,0,0,0.15);
+            padding: 12px 24px;
+            display: flex;
+            gap: 20px;
+        }
+        .topnav a {
+            color: #fff;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 8px;
+        }
+        .topnav a:hover { background: rgba(255,255,255,0.2); }
+        .section {
+            background: rgba(255,255,255,0.15);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 20px;
+        }
+
         body {
             font-family: 'Times New Roman', Times, serif;
             background: linear-gradient(to right bottom, #859bff, #d8459d);
             min-height: 100vh;
             color: #fff;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .page {
+            display: flex;
+            flex: 1;
+            gap: 20px;
             padding: 20px;
         }
+
         .sidebar {
             background: rgba(255, 255, 255, 0.15);
             border-radius: 12px;
             width: 280px;
             padding: 16px;
+            transition: width 0.3s;
+            height: fit-content;
         }
+
+        .sidebar.collapsed{
+            width: 60px;
+        }
+
         .sidebar-header {
             font-size: 1.4rem;
             font-weight: bold;
@@ -32,6 +71,11 @@
             justify-content: space-between;
             align-items: center;
         }
+
+        .sidebar-header span.title {
+            transition: opacity 0.3s;
+        }
+
         .toggle-btn {
             background: none;
             border: none;
@@ -44,6 +88,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
+            overflow: hidden;
         }
         .menu li{
          background: rgba(255, 255, 255, 0.1);
@@ -66,10 +111,78 @@
             color: #fff;
             font-weight: bold;
             text-decoration: none;
+            font-size: 1rem;
+        }
+        .back-link:hover {
+            text-decoration: underline;
+        }
+        .content {
+            flex: 1;
         }
     </style>
     </head>
     <body>
-        <a href="index.html"
+
+        <div class="topnav">
+            <a href="index.html">← Password Generator</a>
+            <a href="about.html">About Me</a>
+        </div>
+
+        <div class="page">
+            <div class="sidebar" id="sidebar">
+                <div class="sidebar-header">
+                    <span class="title">About Me</span>
+                    <button class="toggle-btn" onclick="toggelMenu()">
+                        <span class="material-icons" id="arrowIcon">chevron_left</span>
+                    </button>
+                </div>
+                <ul class="menu" id="menu">
+                    <li>
+                        <span class="material-icons">person</span>
+                        Who I Am 
+                    </li>
+                    <li>
+                        <span class="material-icons">code</span>
+                        My Skills
+                    </li>
+                    <li>
+                        <span class="material-icons">folder</span>
+                        My Projects
+                    </li>
+                    <li onclick="window.location.href='index.html'">
+                        <span class="material-icons">lock</span>
+                        SMARTO PASSWORD GENERATOR
+                    </li>
+                </ul>
+            </div>
+
+            <div class="content">
+                <a href="index.html" class="back-link">
+                    <span class="material-icons">arrow_back</span>
+                    Back to My Page
+                </a>
+                <h1>Welcome to My Page</h1>
+
+                <div class="section" id="about">
+                    <h2>Who I Am</h2>
+                    <p>Hi! I'm a high school student at <strong>STEM High School — 6th of October</strong>,
+                    one of the best STEM schools in Egypt. I'm passionate about technology and programming.</p>
+                </div>
+            </div>
+        </div>
+
+        <script>
+            function toggelMenu(){
+                const sidebar = document.getElementById('sidebar');
+                const arrow = document.getElementById('arrowIcon');
+
+                sidebar.classList.toggle('collapsed');
+                if (sidebar.classList.contains('collapsed')){
+                    arrow.innerText = 'chevron_right';
+                }else{
+                    arrow.innerText = 'chevron_left';
+                }
+            }
+        </script>
     </body>
 </html>
